@@ -6,6 +6,12 @@ import com.wix.mysql.config.MysqldConfig;
 import com.wix.mysql.config.SchemaConfig;
 import lombok.extern.slf4j.Slf4j;
 
+import static com.wix.mysql.EmbeddedMysql.anEmbeddedMysql;
+import static com.wix.mysql.ScriptResolver.classPathScript;
+import static com.wix.mysql.config.Charset.UTF8;
+import static com.wix.mysql.config.MysqldConfig.aMysqldConfig;
+import static com.wix.mysql.config.SchemaConfig.aSchemaConfig;
+import static com.wix.mysql.distribution.Version.v5_7_17;
 
 
 @Slf4j
@@ -17,8 +23,8 @@ public class EmbeddedMysqlManager {
     private final String DB_PASSWD = "testPwd";
     private EmbeddedMysql mysqld;
     private SchemaConfig schemaConfig;
-    private int dbPort = 4408;
-    private String dbSchemaName = "tiger_db";
+    private final int dbPort = 4408;
+    private final String dbSchemaName = "tiger_db";
 
     private EmbeddedMysqlManager() {
         startDatabase();
@@ -49,13 +55,6 @@ public class EmbeddedMysqlManager {
 
         log.info("embedded mysql started.");
 
-    }
-
-    @Override
-    protected void finalize() {
-        if (mysqld != null) {
-            mysqld.stop();
-        }
     }
 
     String getDbUrl() {
