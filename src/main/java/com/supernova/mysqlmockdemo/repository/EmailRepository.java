@@ -1,10 +1,9 @@
 package com.supernova.mysqlmockdemo.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import com.supernova.mysqlmockdemo.models.UserEmail;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.supernova.mysqlmockdemo.models.UserEmail;
-
 @Repository
-public interface EmailRepository extends CrudRepository<UserEmail, Integer>  {	
+public interface EmailRepository extends JpaRepository<UserEmail, Long> {
 }

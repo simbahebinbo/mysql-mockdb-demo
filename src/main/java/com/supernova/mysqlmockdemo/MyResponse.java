@@ -1,20 +1,13 @@
 package com.supernova.mysqlmockdemo;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MyResponse {
-	private long count;
-
-	public MyResponse() {
-	}
-
-	public MyResponse(long count2) {
-		this.count = count2;
-	}
-
-	public long getCount() {
-		return this.count;
-	}
-
-	public void setCount(long count) {
-		this.count = count;
-	}
+    private long count;
 }
