@@ -11,7 +11,7 @@ import static com.wix.mysql.ScriptResolver.classPathScript;
 import static com.wix.mysql.config.Charset.UTF8;
 import static com.wix.mysql.config.MysqldConfig.aMysqldConfig;
 import static com.wix.mysql.config.SchemaConfig.aSchemaConfig;
-import static com.wix.mysql.distribution.Version.v5_7_17;
+import static com.wix.mysql.distribution.Version.v8_latest;
 
 
 @Slf4j
@@ -42,7 +42,7 @@ public class EmbeddedMysqlManager {
     }
 
     private void startDatabase() {
-        MysqldConfig dbConfig = aMysqldConfig(v5_7_17).withCharset(UTF8).withPort(dbPort).withUser(DB_USER, DB_PASSWD)
+        MysqldConfig dbConfig = aMysqldConfig(v8_latest).withCharset(UTF8).withPort(dbPort).withUser(DB_USER, DB_PASSWD)
                 .build();
 
         schemaConfig = aSchemaConfig(dbSchemaName)
