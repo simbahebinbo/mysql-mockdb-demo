@@ -2,16 +2,22 @@ package com.supernova.mysqlmockdemo.embedded;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 
 @Slf4j
-@Configuration
+@TestConfiguration
 public class EmbeddedDataSourceConfig {
     private MysqlDataSource dataSource;
+
+    @PostConstruct
+    public void init() {
+        log.info("config init");
+    }
 
     @Bean
     public DataSource getDataSource() {
